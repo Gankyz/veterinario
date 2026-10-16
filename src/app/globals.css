@@ -1067,6 +1067,10 @@ select.campo {
 .pegadas span {
   display: inline-flex;
 }
+.pegadas-sobre {
+  max-width: 420px;
+  margin: 40px 0 0;
+}
 .pegadas span:nth-child(odd) {
   transform: translateY(-8px) rotate(80deg);
 }

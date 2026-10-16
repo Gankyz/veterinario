@@ -220,6 +220,7 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+              <Pegadas className="pegadas-sobre" />
             </div>
             <div data-reveal>
               <h2 className="depo-titulo">O que dizem os tutores</h2>
