@@ -21,7 +21,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR" className={hanken.variable}>
+    // suppressHydrationWarning: o script abaixo adiciona a classe "js" antes do React carregar.
+    <html lang="pt-BR" className={hanken.variable} suppressHydrationWarning>
       <head>
         {/* Marca a página como "com script" antes da pintura, para as entradas animadas não piscarem. */}
         <script

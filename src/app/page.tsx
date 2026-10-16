@@ -3,7 +3,9 @@ import { ArrowRight, Clock, Heart, MapPin, MessageCircle, PawPrint, Phone, Steth
 import { AbertoAgora } from "@/components/AbertoAgora";
 import { CupomWhatsApp } from "@/components/CupomWhatsApp";
 import { Depoimentos } from "@/components/Depoimentos";
+import { HeroArte } from "@/components/HeroArte";
 import { Icone } from "@/components/Icone";
+import { Redes } from "@/components/Redes";
 import { Revelar } from "@/components/Revelar";
 import {
   clinica,
@@ -33,6 +35,19 @@ function iniciais(nome: string) {
 }
 
 const NovaAba = () => <span className="sr-only"> (abre em nova aba)</span>;
+
+// Trilha de patinhas que aparecem uma de cada vez.
+function Pegadas({ className = "" }: { className?: string }) {
+  return (
+    <div className={`pegadas ${className}`} aria-hidden="true" data-reveal>
+      {Array.from({ length: 8 }).map((_, i) => (
+        <span key={i} style={{ transitionDelay: `${i * 320}ms` }}>
+          <PawPrint size={22} />
+        </span>
+      ))}
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -79,9 +94,12 @@ export default function Home() {
                   <ArrowRight className="seta-icone" size={18} aria-hidden="true" />
                 </a>
               </div>
-              <AbertoAgora className="hero-status" />
+              <div className="hero-status">
+                <AbertoAgora />
+                <Redes mensagem={mensagemPadrao} />
+              </div>
             </div>
-            <div className="hero-arte">
+            <HeroArte>
               <div className="hero-circulo" aria-hidden="true" />
               <div className="hero-pata" aria-hidden="true">
                 <svg viewBox="0 0 100 100" fill="currentColor">
@@ -98,7 +116,7 @@ export default function Home() {
                 alt={hero.fotoAlt}
                 width={hero.fotoLargura}
                 height={hero.fotoAltura}
-                priority
+                preload
                 sizes="(max-width: 1000px) 100vw, 55vw"
               />
               <div className="hero-cartao">
@@ -110,7 +128,7 @@ export default function Home() {
                   <span>40 minutos com o veterinário</span>
                 </div>
               </div>
-            </div>
+            </HeroArte>
           </div>
         </section>
 
@@ -249,12 +267,18 @@ export default function Home() {
                 </li>
                 <li data-reveal>
                   <span className="icone-circulo">
-                    <Phone size={20} aria-hidden="true" />
+                    <MessageCircle size={20} aria-hidden="true" />
                   </span>
                   <a href={linkWhatsApp(mensagemPadrao)} target="_blank" rel="noopener noreferrer">
-                    {clinica.telefoneExibicao} (WhatsApp)
+                    {clinica.whatsappExibicao} (WhatsApp)
                     <NovaAba />
                   </a>
+                </li>
+                <li data-reveal>
+                  <span className="icone-circulo">
+                    <Phone size={20} aria-hidden="true" />
+                  </span>
+                  <a href={`tel:${clinica.telefone}`}>{clinica.telefoneExibicao} (telefone)</a>
                 </li>
                 <li data-reveal>
                   <span className="icone-circulo">
@@ -294,13 +318,7 @@ export default function Home() {
       {/* ---------------- Rodapé ---------------- */}
       <footer className="rodape">
         <div className="container">
-          <div className="pegadas" aria-hidden="true" data-reveal>
-            {Array.from({ length: 8 }).map((_, i) => (
-              <span key={i} style={{ transitionDelay: `${i * 140}ms` }}>
-                <PawPrint size={22} />
-              </span>
-            ))}
-          </div>
+          <Pegadas />
           <div className="rodape-linha">
             <a className="logo" href="#topo">
               <span className="logo-marca">

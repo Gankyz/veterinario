@@ -10,7 +10,13 @@ export const clinica = {
   descricao: "Clínica veterinária",
   // Número de exemplo: substitua pelo WhatsApp real (formato internacional, só dígitos).
   whatsapp: "5511900000000",
-  telefoneExibicao: "(11) 90000-0000",
+  whatsappExibicao: "(11) 90000-0000",
+  // Telefone fixo, para ligações (formato internacional, com +).
+  telefone: "+551130000000",
+  telefoneExibicao: "(11) 3000-0000",
+  // Perfil de exemplo: substitua pelo Instagram da clínica.
+  instagram: "https://www.instagram.com/suamarca/",
+  instagramUsuario: "@suamarca",
   email: "contato@suamarca.com.br",
   endereco: "Rua Harmonia, 412",
   bairro: "Vila Madalena, São Paulo",
@@ -117,4 +123,6 @@ export function linkWhatsApp(texto: string) {
 }
 
 export const linkMapa = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(clinica.mapaBusca)}`;
-export const mapaEmbed = `https://www.google.com/maps?q=${encodeURIComponent(clinica.mapaBusca)}&output=embed`;
+// Endereço direto do mapa incorporado (o formato antigo "maps?q=...&output=embed" redireciona e o navegador bloqueia).
+// Para mostrar a ficha da clínica, troque pelo src de "Compartilhar > Incorporar um mapa" no Google Maps.
+export const mapaEmbed = `https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${encodeURIComponent(clinica.mapaBusca)}!6i17`;

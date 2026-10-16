@@ -263,7 +263,7 @@ img {
   min-height: 0;
 }
 .hero-texto {
-  padding-block: 56px;
+  padding-block: 40px;
   padding-right: 40px;
 }
 .hero h1 {
@@ -279,13 +279,49 @@ img {
   color: var(--tinta-suave);
 }
 .hero-acoes {
-  margin-top: 32px;
+  margin-top: 24px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
 .hero-status {
-  margin-top: 24px;
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
+/* WhatsApp e Instagram: botões redondos com o símbolo da marca. */
+.redes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+}
+.rede {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--azul);
+  color: var(--azul);
+  transition:
+    background-color 180ms var(--ease-out),
+    border-color 180ms var(--ease-out),
+    color 180ms var(--ease-out),
+    transform 180ms var(--ease-out);
+}
+.rede:hover {
+  background: var(--azul);
+  border-color: var(--azul);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.rede:active {
+  transform: scale(0.94);
 }
 /* Imagem recortada: assentada na base do topo, com um círculo atrás. */
 .hero-arte {
@@ -934,6 +970,10 @@ select.campo {
 .hero-recorte {
   animation: entra-baixo 1.2s var(--ease-out) 0.25s both;
 }
+/* Tudo da arte do topo espera a foto carregar (ver HeroArte.tsx). */
+.js .hero-arte:not(.pronta) > * {
+  animation-play-state: paused;
+}
 .hero-pata {
   animation:
     salta 900ms var(--mola) 0.8s both,
@@ -1037,8 +1077,8 @@ select.campo {
   opacity: 0;
   scale: 0.3;
   transition:
-    opacity 300ms var(--ease-out),
-    scale 500ms var(--mola);
+    opacity 600ms var(--ease-out),
+    scale 900ms var(--mola);
 }
 .js .pegadas.visivel span {
   opacity: 1;
@@ -1108,7 +1148,7 @@ select.campo {
     min-height: 0;
   }
   .hero-texto {
-    padding: 48px 0 40px;
+    padding: 36px 0 32px;
   }
   .hero-arte {
     padding-top: 0;
